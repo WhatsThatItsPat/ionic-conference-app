@@ -10,6 +10,7 @@ import { PopoverPage } from '../about-popover/about-popover';
   styleUrls: ['./about.scss'],
 })
 export class AboutPage {
+  page = 'about';
   location = 'madison';
   conferenceDate = '2047-05-17';
 
@@ -18,6 +19,26 @@ export class AboutPage {
   };
 
   constructor(public popoverCtrl: PopoverController) { }
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+  }
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({

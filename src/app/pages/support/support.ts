@@ -10,6 +10,7 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['./support.scss'],
 })
 export class SupportPage {
+  page = 'support';
   submitted = false;
   supportMessage: string;
 
@@ -19,11 +20,29 @@ export class SupportPage {
   ) { }
 
   async ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+
     const toast = await this.toastCtrl.create({
       message: 'This does not actually send a support request.',
       duration: 3000
     });
     await toast.present();
+  }
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
   }
 
   async submit(form: NgForm) {

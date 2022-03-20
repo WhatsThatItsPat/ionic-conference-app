@@ -12,6 +12,7 @@ import { UserData } from '../../providers/user-data';
   styleUrls: ['./account.scss'],
 })
 export class AccountPage implements AfterViewInit {
+  page = 'account';
   username: string;
 
   constructor(
@@ -20,7 +21,28 @@ export class AccountPage implements AfterViewInit {
     public userData: UserData
   ) { }
 
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+  }
+
   ngAfterViewInit() {
+    console.log(`ngAfterViewInit ${this.page}`);
     this.getUsername();
   }
 

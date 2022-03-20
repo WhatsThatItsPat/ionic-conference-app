@@ -10,6 +10,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./speaker-detail.scss'],
 })
 export class SpeakerDetailPage {
+  page = 'speaker detail';
   speaker: any;
 
   constructor(
@@ -21,6 +22,8 @@ export class SpeakerDetailPage {
   ) {}
 
   ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+
     this.dataProvider.load().subscribe((data: any) => {
       const speakerId = this.route.snapshot.paramMap.get('speakerId');
       if (data && data.speakers) {
@@ -32,6 +35,22 @@ export class SpeakerDetailPage {
         }
       }
     });
+  }
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
   }
 
   openExternalUrl(url: string) {

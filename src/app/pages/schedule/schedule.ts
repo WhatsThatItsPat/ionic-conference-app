@@ -12,6 +12,7 @@ import { UserData } from '../../providers/user-data';
   styleUrls: ['./schedule.scss'],
 })
 export class SchedulePage implements OnInit {
+  page = 'schedule';
   // Gets a reference to the list element
   @ViewChild('scheduleList', { static: true }) scheduleList: IonList;
 
@@ -38,9 +39,27 @@ export class SchedulePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+
     this.updateSchedule();
 
     this.ios = this.config.get('mode') === 'ios';
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
   }
 
   updateSchedule() {

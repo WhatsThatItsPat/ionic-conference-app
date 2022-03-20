@@ -12,6 +12,7 @@ import Swiper from 'swiper';
   styleUrls: ['./tutorial.scss'],
 })
 export class TutorialPage {
+  page = 'tutorial';
   showSkip = true;
   private slides: Swiper;
 
@@ -37,7 +38,13 @@ export class TutorialPage {
     this.cd.detectChanges();
   }
 
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
   ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
         this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
@@ -47,7 +54,19 @@ export class TutorialPage {
     this.menu.enable(false);
   }
 
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+
+  }
+
   ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
   }

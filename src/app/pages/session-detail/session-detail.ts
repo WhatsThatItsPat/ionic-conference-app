@@ -10,6 +10,7 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'session-detail.html'
 })
 export class SessionDetailPage {
+  page = 'session detail';
   session: any;
   isFavorite = false;
   defaultHref = '';
@@ -21,6 +22,8 @@ export class SessionDetailPage {
   ) { }
 
   ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+
     this.dataProvider.load().subscribe((data: any) => {
       if (data && data.schedule && data.schedule[0] && data.schedule[0].groups) {
         const sessionId = this.route.snapshot.paramMap.get('sessionId');
@@ -44,7 +47,20 @@ export class SessionDetailPage {
   }
 
   ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
     this.defaultHref = `/app/tabs/schedule`;
+  }
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
   }
 
   sessionClick(item: string) {

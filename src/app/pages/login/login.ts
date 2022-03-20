@@ -14,6 +14,7 @@ import { UserOptions } from '../../interfaces/user-options';
   styleUrls: ['./login.scss'],
 })
 export class LoginPage {
+  page = 'login';
   login: UserOptions = { username: '', password: '' };
   submitted = false;
 
@@ -21,6 +22,26 @@ export class LoginPage {
     public userData: UserData,
     public router: Router
   ) { }
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+  }
 
   onLogin(form: NgForm) {
     this.submitted = true;

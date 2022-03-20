@@ -17,6 +17,7 @@ import {
   styleUrls: ['./map.scss']
 })
 export class MapPage {
+  page = 'map';
   // @ViewChild('mapCanvas', { static: true }) mapElement: ElementRef;
 
   constructor(
@@ -24,6 +25,26 @@ export class MapPage {
     // public confData: ConferenceData,
     // public platform: Platform
   ) {}
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+  }
 
   // async ngAfterViewInit() {
   //   const appEl = this.doc.querySelector('ion-app');

@@ -24,7 +24,29 @@ import { PopoverController } from '@ionic/angular';
   `
 })
 export class PopoverPage {
+  page = 'about popover (not really a page)';
+
   constructor(public popoverCtrl: PopoverController) {}
+
+  ngOnInit() {
+    console.log(`ngOnInit ${this.page}`);
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter ${this.page}`);
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter ${this.page}`);
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave ${this.page}`);
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave ${this.page}`);
+  }
 
   support() {
     // this.app.getRootNavs()[0].push('/support');
