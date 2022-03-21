@@ -14,15 +14,15 @@ import { SpeakerListModule } from '../speaker-list/speaker-list.module';
 
 @NgModule({
   imports: [
-    AboutModule,
     CommonModule,
     IonicModule,
-    MapModule,
+    TabsPageRoutingModule,
     ScheduleModule,
+    AboutModule,
+    SpeakerListModule,
+    MapModule,
     SessionDetailModule,
     SpeakerDetailModule,
-    SpeakerListModule,
-    TabsPageRoutingModule
   ],
   declarations: [
     TabsPage,

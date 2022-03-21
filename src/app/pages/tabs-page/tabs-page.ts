@@ -7,11 +7,6 @@ export class TabsPage {
   page = 'tabs';
 
   /**
-   * I'd mostly though of Ionic lifecycle events as something used
-   * with just pages, but not every Angular component. I'm looking
-   * at events for tabs (which is a container for other pages) and
-   * for the about-popover.
-   * 
    * When refreshing on schedule, the 2 enter events for tabs fire
    * after those for schedule:
    *    ngOnInit tabs
