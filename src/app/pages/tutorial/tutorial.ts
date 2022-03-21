@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage';
 import Swiper from 'swiper';
@@ -17,18 +17,27 @@ export class TutorialPage {
   private slides: Swiper;
 
   constructor(
-    public menu: MenuController,
     public router: Router,
+    private navController: NavController,
+    public menu: MenuController,
     public storage: Storage,
     private cd: ChangeDetectorRef
   ) {}
 
   startApp() {
-    // TODO look at this...
-    this.router
-      .navigateByUrl('/app/tabs/schedule', { replaceUrl: true })
-      // .navigateByUrl('/app/tabs/schedule')
+
+    /**
+     * These ones weren't broken like the others. I guess `replaceUrl` is
+     * pretty similar to using Ionic's navigateRoot.
+     */
+    // this.router
+    //   .navigateByUrl('/app/tabs/schedule', { replaceUrl: true })
+    //   .then(() => this.storage.set('ion_did_tutorial', true));
+
+    this.navController
+      .navigateRoot('/app/tabs/schedule')
       .then(() => this.storage.set('ion_did_tutorial', true));
+
   }
 
   setSwiperInstance(swiper: Swiper) {
@@ -49,7 +58,8 @@ export class TutorialPage {
 
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
-        this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
+        // this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
+        this.navController.navigateRoot('/app/tabs/schedule');
       }
     });
 
