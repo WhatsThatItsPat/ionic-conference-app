@@ -2,13 +2,21 @@
   <ion-split-pane contentId="main-content">
 
     <ion-menu contentId="main-content">
+
       <ion-content>
+
         <ion-list lines="none">
           <ion-list-header>
             Conference
           </ion-list-header>
+
           <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+
+            <ion-item
+              [routerLink]="p.url"
+              routerLinkActive="selected"
+              routerDirection="root" detail="false"
+            >
               <ion-icon slot="start" [name]="p.icon + '-outline'"></ion-icon>
               <ion-label>
                 {{p.title}}
@@ -24,7 +32,12 @@
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
+
+            <ion-item
+              routerLink="/account"
+              routerLinkActive="active"
+              routerDirection="root" detail="false"
+            >
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>
                 Account
@@ -33,7 +46,12 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+            <ion-item
+              routerLink="/support"
+              routerLinkActive="active"
+              routerDirection="root"
+              detail="false"
+            >
               <ion-icon slot="start" name="help"></ion-icon>
               <ion-label>
                 Support
@@ -58,7 +76,12 @@
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/login" routerLinkActive="active" routerDirection="root" detail="false">
+            <ion-item
+              routerLink="/login"
+              routerLinkActive="active"
+              routerDirection="root"
+              detail="false"
+            >
               <ion-icon slot="start" name="log-in"></ion-icon>
               <ion-label>
                 Login
@@ -67,7 +90,12 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/support" routerLinkActive="active" routerDirection="root" detail="false">
+            <ion-item
+              routerLink="/support"
+              routerLinkActive="active"
+              routerDirection="root"
+              detail="false"
+            >
               <ion-icon slot="start" name="help"></ion-icon>
               <ion-label>
                 Support
@@ -76,7 +104,12 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/signup" routerLinkActive="active" routerDirection="root" detail="false">
+            <ion-item
+              routerLink="/signup"
+              routerLinkActive="active"
+              routerDirection="root"
+              detail="false"
+            >
               <ion-icon slot="start" name="person-add"></ion-icon>
               <ion-label>
                 Signup
@@ -97,12 +130,21 @@
           <ion-list-header>
             Tutorial
           </ion-list-header>
+
           <ion-menu-toggle autoHide="false">
-            <ion-item button (click)="openTutorial()" detail="false">
+            <!-- openTutorial() was using the default routing which caused the
+              tabs component to stay around. It works better with navigateRoot
+              from the NavController so it can match the behaviour of the
+              other menu items. -->
+            <ion-item
+              button (click)="openTutorial()"
+              detail="false"
+            >
               <ion-icon slot="start" name="hammer"></ion-icon>
               <ion-label>Show Tutorial</ion-label>
             </ion-item>
           </ion-menu-toggle>
+
         </ion-list>
       </ion-content>
     </ion-menu>

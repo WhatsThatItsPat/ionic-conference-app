@@ -2,7 +2,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 
-import { MenuController, Platform, ToastController } from '@ionic/angular';
+import {
+  MenuController,
+  Platform,
+  ToastController,
+  NavController
+} from '@ionic/angular';
 
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -46,7 +51,10 @@ export class AppComponent implements OnInit {
   constructor(
     private menu: MenuController,
     private platform: Platform,
+
     private router: Router,
+    private navController: NavController,
+
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: Storage,
@@ -57,6 +65,10 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
+  /**
+   * Interesting...using async here. Any reason, and is it possible to
+   * do the same for Ioinic lifecycle events?
+   */
   async ngOnInit() {
     this.checkLoginStatus();
     this.listenForLoginEvents();
@@ -124,6 +136,27 @@ export class AppComponent implements OnInit {
   openTutorial() {
     this.menu.enable(false);
     this.storage.set('ion_did_tutorial', false);
-    this.router.navigateByUrl('/tutorial');
+
+    /**
+     * The ones in the templage do the root thing.
+     * 
+     * This leaves the tabs component in the DOM. The ng-component that holds
+     * the tabs gets a class `ion-page-hidden`. The page-tutorial component
+     * ends up as its sibling and gets the class `can-go-back`. They both have
+     * the `ion-page` class.
+     */
+    // this.router.navigateByUrl('/tutorial');
+    // I don't see a difference between navigate and *ByUrl
+    // this.router.navigate(['tutorial']);
+
+    /**
+     * The items in the sidemenu template use routerDirection="root",
+     * and I think we need to do the same in code for this one. When using
+     * `navigateRoot`, the ng-component that holds the tabs is cleared like
+     * with the delarative ones in the template. There's only one `ion-page`
+     * at the root level and those `ion-page-hidden` and `can-go-back`
+     * classes aren't used.
+     */
+    this.navController.navigateRoot('/tutorial');
   }
 }
