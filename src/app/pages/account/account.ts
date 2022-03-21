@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 import { UserData } from '../../providers/user-data';
 
@@ -16,8 +16,9 @@ export class AccountPage implements AfterViewInit {
   username: string;
 
   constructor(
-    public alertCtrl: AlertController,
     public router: Router,
+    private navController: NavController,
+    public alertCtrl: AlertController,
     public userData: UserData
   ) { }
 
@@ -90,10 +91,20 @@ export class AccountPage implements AfterViewInit {
 
   logout() {
     this.userData.logout();
-    this.router.navigateByUrl('/login');
+    /**
+     * Same issue with not properly navigating to root so
+     * we can clear pages in the DOM.
+     */
+    // this.router.navigateByUrl('/login');
+    this.navController.navigateRoot('/login');
   }
 
   support() {
-    this.router.navigateByUrl('/support');
+    /**
+     * Same issue with not properly navigating to root so
+     * we can clear pages in the DOM.
+     */
+    // this.router.navigateByUrl('/support');
+    this.navController.navigateRoot('/support');
   }
 }
