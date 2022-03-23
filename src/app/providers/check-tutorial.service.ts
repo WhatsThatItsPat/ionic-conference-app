@@ -17,7 +17,7 @@ export class CheckTutorial implements CanLoad {
       if (res) {
         // Here's another.
         // this.router.navigate(['/app', 'tabs', 'schedule']);
-        this.navController.navigateRoot('/app/tabs/schedule');
+        this.navController.navigateRoot('/tabs/schedule');
         return false;
       } else {
         return true;

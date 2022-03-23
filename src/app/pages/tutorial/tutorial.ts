@@ -31,11 +31,11 @@ export class TutorialPage {
      * pretty similar to using Ionic's navigateRoot.
      */
     // this.router
-    //   .navigateByUrl('/app/tabs/schedule', { replaceUrl: true })
+    //   .navigateByUrl('/tabs/schedule', { replaceUrl: true })
     //   .then(() => this.storage.set('ion_did_tutorial', true));
 
     this.navController
-      .navigateRoot('/app/tabs/schedule')
+      .navigateRoot('/tabs/schedule')
       .then(() => this.storage.set('ion_did_tutorial', true));
 
   }
@@ -58,8 +58,8 @@ export class TutorialPage {
 
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
-        // this.router.navigateByUrl('/app/tabs/schedule', { replaceUrl: true });
-        this.navController.navigateRoot('/app/tabs/schedule');
+        // this.router.navigateByUrl('/tabs/schedule', { replaceUrl: true });
+        this.navController.navigateRoot('/tabs/schedule');
       }
     });
 

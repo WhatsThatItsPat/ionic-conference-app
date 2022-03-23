@@ -58,8 +58,8 @@ export class LoginPage {
        * Same issue with not properly navigating to root so
        * we can clear pages in the DOM.
        */
-      // this.router.navigateByUrl('/app/tabs/schedule');
-      this.navController.navigateRoot('/app/tabs/schedule');
+      // this.router.navigateByUrl('/tabs/schedule');
+      this.navController.navigateRoot('/tabs/schedule');
     }
   }
 

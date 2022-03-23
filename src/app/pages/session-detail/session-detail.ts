@@ -48,7 +48,7 @@ export class SessionDetailPage {
 
   ionViewDidEnter() {
     console.log(`ionViewDidEnter ${this.page}`);
-    this.defaultHref = `/app/tabs/schedule`;
+    this.defaultHref = `/tabs/schedule`;
   }
 
   ngOnInit() {

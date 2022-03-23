@@ -6,7 +6,8 @@ import { SchedulePage } from '../schedule/schedule';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    // path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -59,7 +60,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/tabs/schedule',
+        redirectTo: '/tabs/schedule',
         pathMatch: 'full'
       }
     ]
