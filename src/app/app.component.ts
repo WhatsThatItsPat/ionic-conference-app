@@ -129,7 +129,9 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/tabs/schedule');
+      // Did I miss one? Should this be navigateRoot?
+      // return this.router.navigateByUrl('/tabs/schedule');
+      return this.navController.navigateRoot('/tabs/schedule');
     });
   }
 
